@@ -1,13 +1,31 @@
 {% extends "index.html" %}
 {% block content %}
-<div class="container mt-5">
-    <form action="/compare" method="POST">
-
-        <div class="mb-3">
-            <label for="name" class="form-label">Product</label>
-            <input type="text" class="form-control" id="name" name="product" required>
+<div class="continer mt-5">
+    <div class="row">
+        {% for flipkartProduct in flipkartProducts %}
+            <h6>{{ flipkartProduct }}</h6>
+        {% endfor %}
+    </div>
+    <div class="row">
+        {% for amazonProduct in amazonProducts %}
+        <div class="col">
+            <div class="card" style="width: 18rem;">
+                <div style="width-18rem; height-12rem;">
+                    <img class="card-img-top" src="{{ amazonProduct.thumbnail }}" alt="Card image cap">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ amazonProduct.title }}</h5>
+                    <p class="card-text">
+                        Price: {{ amazonProduct.price.before_price }}
+                        Offer: {{ amazonProduct.price.savings_percent }} % off
+                        Saving: {{ amazonProduct.price.savings_amount }}
+                        Offer Price: {{ amazonProduct.price.current_price }}
+                    </p>
+                    <a class="btn btn-primary" href="{{ amazonProduct.url }}">Order Now</a>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Compare</button>
-    </form>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

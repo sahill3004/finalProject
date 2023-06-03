@@ -4,7 +4,18 @@
     <div class="container text-center">
         <h1 class="display-4">Welcome to Our Price Comparison App</h1>
         <p class="lead">We make online shopping easy at affordable prices</p>
-
+        <!--
+        <a href="#" class="btn btn-primary btn-lg">Get Started</a>
+        -->
     </div>
 </header>
+<div class="container mt-5">
+    <form action="/compare/products" method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Product</label>
+            <input type="text" class="form-control" id="name" name="product" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Compare</button>
+    </form>
+</div>
 {% endblock %}
