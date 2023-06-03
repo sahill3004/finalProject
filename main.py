@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for
 from Scrappers import flipkartScrapping as scrap
+from Scrappers import amazonScrapping as amazonScrap
 
 
 app = Flask(__name__)
@@ -7,8 +8,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
-    productDetails = scrap.flipkartScrapper("dell")
-    print(productDetails)
+    productDetailsFlipkart = scrap.flipkartScrapper()
+    productDetailsAmazon = amazonScrap.amazonScrapper()
     return render_template("index.html")
 
 
